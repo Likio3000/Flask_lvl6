@@ -1,0 +1,26 @@
+<!-- Filename: ./flaskr/templates/auth/login.html -->
+<!-- ----- Start of file content ----- -->
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Log In{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <section>
+    <form method="post">
+      <div>
+        <label for="username">Username</label>
+        <input name="username" id="username" value="{{ request.form.get('username', '') }}" required autofocus> {# Added value persistence and autofocus #}
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+      </div>
+      <input type="submit" value="Log In">
+    </form>
+    <p class="text-center text-muted">
+        Don't have an account? <a href="{{ url_for('auth.register') }}">Register here</a>.
+    </p>
+  </section>
+{% endblock %}

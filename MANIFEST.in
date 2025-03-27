@@ -1,0 +1,20 @@
+# Filename: ./MANIFEST.in
+# ----- Start of file content -----
+# Include template files
+recursive-include flaskr/templates *
+
+# Include static files
+recursive-include flaskr/static *
+
+# Include the database schema
+include flaskr/schema.sql
+
+# Include configuration files if necessary (but usually not in source dist)
+# include config.py
+
+# Exclude files if necessary (e.g., test data)
+# recursive-exclude tests *.db
+
+# Include project metadata files
+include pyproject.toml
+include README.md

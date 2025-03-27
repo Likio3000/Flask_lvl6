@@ -1,0 +1,18 @@
+# Filename: ./flaskr/templates/errors/404.html
+# ----- Start of file content -----
+{% extends 'base.html' %}
+
+{% block title %}Page Not Found{% endblock %}
+
+{% block header %}
+  <h1>404 - Page Not Found</h1>
+{% endblock %}
+
+{% block content %}
+  <section class="text-center">
+    <p>Sorry, the page you are looking for does not exist.</p>
+    <p>It might have been moved or deleted.</p>
+    <p><a href="{{ url_for('index') }}" class="button">Go to Homepage</a></p>
+  </section>
+{% endblock %}
+# ----- End of file content -----

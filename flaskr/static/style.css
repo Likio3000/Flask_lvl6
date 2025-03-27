@@ -1,0 +1,556 @@
+/* Filename: ./flaskr/static/style.css */
+/* ----- Start of file content ----- */
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Color Palette */
+    --primary-color: #377ba8; /* Blue */
+    --secondary-color: #4CAF50; /* Green for success */
+    --accent-color: #ffc107; /* Yellow for warnings */
+    --danger-color: #dc3545; /* Red for errors/danger */
+    --light-gray: #f8f9fa;
+    --medium-gray: #dee2e6;
+    --dark-gray: #6c757d; /* Using this for MD headings */
+    --text-color: #212529;
+    --link-color: var(--primary-color);
+    --link-hover-color: #2a5f85;
+    --background-color: #ffffff;
+    --body-background: #e9ecef;
+    --posts-title-color: #000000;
+
+    /* Typography */
+    --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-family-serif: Georgia, "Times New Roman", Times, serif;
+    --base-font-size: 16px;
+    --line-height: 1.6;
+
+    /* Spacing */
+    --spacing-unit: 1rem; /* approx 16px */
+    --spacing-xs: calc(var(--spacing-unit) * 0.25); /* 4px */
+    --spacing-sm: calc(var(--spacing-unit) * 0.5);  /* 8px */
+    --spacing-md: var(--spacing-unit);             /* 16px */
+    --spacing-lg: calc(var(--spacing-unit) * 1.5);  /* 24px */
+    --spacing-xl: calc(var(--spacing-unit) * 2);    /* 32px */
+
+    /* Borders */
+    --border-radius: 0.25rem;
+    --border-color: var(--medium-gray);
+    --border-width: 1px;
+
+    /* Shadows */
+    --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+html {
+    font-size: var(--base-font-size);
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-sans);
+    line-height: var(--line-height);
+    color: var(--text-color);
+    background-color: var(--body-background);
+    margin: 0;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Layout --- */
+.container {
+    /* max-width: 960px; */ /* REMOVED OLD MAX-WIDTH */
+    max-width: 1140px; /* INCREASED MAX-WIDTH for wider content area */
+    width: 95%; /* Allow shrinking on smaller screens */
+    margin: 0 auto; /* Centers the container */
+    background-color: var(--background-color);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    flex-grow: 1; /* Make container fill space */
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Blog Post Styling --- */
+.content > header { /* Header within main content area */
+    border-bottom: var(--border-width) solid var(--border-color);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: var(--spacing-md);
+}
+
+.content > header h1 {
+    margin: 0; /* Reset margin for header h1 */
+    flex-grow: 1; /* Allow title to take space */
+}
+
+/* --- NEW RULE FOR INDEX PAGE 'POSTS' TITLE --- */
+.index-page-title {
+    width: 100%;          /* Ensure it takes full width for centering */
+    text-align: center;   /* Center the text */
+    font-size: 3rem;      /* Make it significantly larger */
+    color: var(--posts-title-color); /* Use a different color (e.g., dark gray) */
+    margin-bottom: var(--spacing-lg); /* Add some space below it */
+    /* Override flex-grow if needed, though width:100% might be enough */
+    flex-grow: 0;
+}
+/* ------------------------------------------ */
+
+
+.action {
+    white-space: nowrap; /* Prevent action links from wrapping */
+}
+
+
+header.page-header {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-bottom: var(--border-width) solid var(--border-color);
+    margin: calc(var(--spacing-lg) * -1) calc(var(--spacing-lg) * -1) var(--spacing-lg); /* Extend to edges */
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-family: var(--font-family-serif);
+}
+
+nav h1 a {
+    color: inherit;
+    text-decoration: none;
+    padding: var(--spacing-sm) 0;
+    display: inline-block;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+nav ul li span,
+nav ul li a {
+    color: inherit;
+    text-decoration: none;
+    padding: var(--spacing-sm);
+    display: block;
+    border-radius: var(--border-radius);
+    transition: background-color 0.2s ease;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+nav ul li span {
+    font-weight: bold;
+}
+
+main.content {
+    flex-grow: 1; /* Ensure main content takes available space */
+    padding-bottom: var(--spacing-lg);
+}
+
+footer.page-footer {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-md);
+    border-top: var(--border-width) solid var(--border-color);
+    text-align: center;
+    font-size: 0.85em;
+    color: var(--dark-gray);
+}
+
+/* --- Typography & Links --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-serif);
+    color: var(--primary-color); /* Default heading color */
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.3;
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+    margin-bottom: var(--spacing-md);
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+hr {
+    border: none;
+    border-top: var(--border-width) solid var(--border-color);
+    margin: var(--spacing-lg) 0;
+}
+
+code, pre {
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    background-color: var(--light-gray);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius);
+    font-size: 0.9em;
+}
+
+pre {
+    padding: var(--spacing-md);
+    overflow-x: auto; /* Allow horizontal scrolling for long code blocks */
+    margin-bottom: var(--spacing-md);
+    border: var(--border-width) solid var(--border-color);
+}
+
+blockquote {
+    margin: var(--spacing-md) 0;
+    padding-left: var(--spacing-md);
+    border-left: 3px solid var(--medium-gray);
+    color: var(--dark-gray);
+    font-style: italic;
+}
+
+/* --- Forms --- */
+form {
+    margin: var(--spacing-lg) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: var(--spacing-xs);
+    display: block; /* Ensure label is above input */
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form textarea {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    width: 100%;
+    transition: border-color 0.2s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="email"]:focus,
+form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(55, 123, 168, 0.2);
+}
+
+form textarea {
+    min-height: 12em;
+    resize: vertical;
+    line-height: var(--line-height);
+}
+
+form input[type="submit"],
+button.button,
+a.button {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    align-self: flex-start; /* Align button to the start */
+    text-decoration: none; /* For a.button */
+    display: inline-block; /* For a.button */
+}
+
+form input[type="submit"]:hover,
+button.button:hover,
+a.button:hover {
+    background-color: var(--link-hover-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Button Variants */
+button.danger,
+a.button.danger,
+input.danger[type="submit"] {
+    background-color: var(--danger-color);
+}
+button.danger:hover,
+a.button.danger:hover,
+input.danger[type="submit"]:hover {
+    background-color: #a71d2a;
+}
+
+button.secondary,
+a.button.secondary {
+    background-color: var(--dark-gray);
+}
+button.secondary:hover,
+a.button.secondary:hover {
+    background-color: #5a6268;
+}
+
+
+/* --- Flash Messages --- */
+.flash {
+    margin: var(--spacing-md) 0;
+    padding: var(--spacing-md);
+    border: var(--border-width) solid;
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Default flash style (info) */
+.flash.info {
+    background-color: #cfe2ff; /* Lighter blue */
+    border-color: #9ec5fe;
+    color: #0a58ca;
+}
+/* Success */
+.flash.success {
+    background-color: #d1e7dd; /* Lighter green */
+    border-color: #a3cfbb;
+    color: #146c43;
+}
+/* Warning */
+.flash.warning {
+    background-color: #fff3cd; /* Lighter yellow */
+    border-color: #ffe69c;
+    color: #664d03;
+}
+/* Error */
+.flash.error {
+    background-color: #f8d7da; /* Lighter red */
+    border-color: #f5c2c7;
+    color: #842029;
+}
+
+/* --- Blog Post Styling --- */
+.content > header { /* Header within main content area */
+    border-bottom: var(--border-width) solid var(--border-color);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: var(--spacing-md);
+}
+
+.content > header h1 {
+    margin: 0; /* Reset margin for header h1 */
+    flex-grow: 1; /* Allow title to take space */
+}
+
+.action {
+    white-space: nowrap; /* Prevent action links from wrapping */
+}
+
+a.action {
+    /* Style action links like buttons */
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+
+a.action:hover {
+    background-color: #3b8a3e;
+}
+a.action.danger { /* Specific style for delete/edit danger actions if needed */
+    background-color: var(--danger-color);
+}
+a.action.danger:hover {
+    background-color: #a71d2a;
+}
+
+
+article.post {
+    margin-bottom: var(--spacing-xl);
+}
+
+article.post > header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to top */
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: var(--spacing-sm);
+}
+
+/* Style for the main post title (outside the .body div) */
+article.post > header h2 {
+    margin: 0 0 var(--spacing-xs) 0;
+    /* Keep using primary color (or choose another) for main title */
+    color: var(--primary-color);
+    font-size: 1.6rem;
+}
+/* Ensure link within main title also uses the color */
+article.post > header h2 a {
+    color: inherit;
+    text-decoration: none;
+}
+article.post > header h2 a:hover {
+    text-decoration: underline;
+}
+
+
+.post .about {
+    color: var(--dark-gray);
+    font-style: italic;
+    font-size: 0.85em;
+    margin-bottom: var(--spacing-sm);
+}
+
+.post .body {
+    line-height: var(--line-height);
+}
+
+/* ---- NEW RULES FOR MARKDOWN HEADINGS ---- */
+/* Target headings ONLY inside the post body */
+.post .body h1,
+.post .body h2,
+.post .body h3,
+.post .body h4,
+.post .body h5,
+.post .body h6 {
+    color: var(--dark-gray); /* Use dark gray for headings within the post body */
+    /* Optional: Adjust margin slightly if needed */
+    /* margin-top: var(--spacing-xl); */
+}
+/* ----------------------------------------- */
+
+
+.post .body p:last-child {
+    margin-bottom: 0; /* Remove margin from last paragraph in body */
+}
+
+
+/* --- Pagination --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--spacing-xl);
+    gap: var(--spacing-sm);
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li a,
+.pagination li span {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--link-color);
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pagination li a:hover {
+    background-color: var(--light-gray);
+    color: var(--link-hover-color);
+    text-decoration: none;
+}
+
+.pagination li.active span {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border-color: var(--primary-color);
+    font-weight: bold;
+}
+
+.pagination li.disabled span {
+    color: var(--dark-gray);
+    border-color: var(--border-color);
+    cursor: not-allowed;
+}
+
+/* --- Utility Classes --- */
+.text-center { text-align: center; }
+.text-muted { color: var(--dark-gray); }
+.mb-0 { margin-bottom: 0 !important; }
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+    body {
+        padding: var(--spacing-sm);
+    }
+    .container {
+        padding: var(--spacing-md);
+        width: 100%; /* Use full width on smaller screens */
+    }
+    header.page-header {
+        padding: var(--spacing-sm) var(--spacing-md);
+        margin: calc(var(--spacing-md) * -1) calc(var(--spacing-md) * -1) var(--spacing-md);
+    }
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+    nav ul {
+        flex-wrap: wrap; /* Allow nav items to wrap */
+        gap: var(--spacing-sm);
+    }
+    .content > header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    article.post > header {
+         flex-direction: column;
+         align-items: flex-start;
+    }
+    article.post > header .action {
+        margin-top: var(--spacing-sm); /* Add space above action button on mobile */
+    }
+    form input[type="submit"],
+    button.button,
+    a.button {
+        width: 100%; /* Make buttons full width on mobile */
+        text-align: center;
+    }
+}

@@ -1,0 +1,58 @@
+<!-- Filename: ./flaskr/templates/base.html -->
+<!-- ----- Start of file content ----- -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Welcome{% endblock %} - Flaskr</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon"> {# Add favicon.ico to static folder #}
+    {% block head_extra %}{% endblock %} {# Extra head elements if needed #}
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <nav>
+                <h1><a href="{{ url_for('index') }}">Flaskr</a></h1>
+                <ul>
+                    {% if g.user %}
+                    <li><span>{{ g.user['username'] }}</span></li>
+                    <li><a href="{{ url_for('blog.create') }}">New Post</a></li> {# Moved New Post here #}
+                    <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+                    <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+
+        <main class="content">
+            {# Render flashed messages outside the header block for better visibility #}
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="flash {{ category|default('info') }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <header>
+                {# Page specific header content (like title, actions) #}
+                {% block header %}{% endblock %}
+            </header>
+
+            {# Main content block #}
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="page-footer">
+            <p>© {{ now.year }} Flaskr Enhanced. A demo application.</p> {# Added simple footer #}
+        </footer>
+    </div> {# End of container #}
+
+    {# Optional: Add JS files here if needed #}
+    {# <script src="{{ url_for('static', filename='main.js') }}"></script> #}
+</body>
+</html>

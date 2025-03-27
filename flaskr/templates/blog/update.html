@@ -1,0 +1,36 @@
+<!-- Filename: ./flaskr/templates/blog/update.html -->
+<!-- ----- Start of file content ----- -->
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit Post: "{{ post['title'] }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <section>
+    <form method="post">
+      <div>
+        <label for="title">Title</label>
+        {# Use post data as default, override with form data if validation failed #}
+        <input name="title" id="title"
+              value="{{ request.form.get('title', post['title']) }}" required autofocus>
+      </div>
+      <div>
+        <label for="body">Body (Markdown supported)</label>
+        <textarea name="body" id="body" required>{{ request.form.get('body', post['body']) }}</textarea>
+      </div>
+      <input type="submit" value="Save Changes">
+    </form>
+  </section>
+
+  <hr>
+
+  <section>
+    <h3>Delete Post</h3>
+    <p>Are you sure you want to delete this post? This action cannot be undone.</p>
+    <form action="{{ url_for('blog.delete', id=post['id']) }}" method="post">
+      <input class="danger" type="submit" value="Delete Post" onclick="return confirm('Are you absolutely sure you want to delete this post?');">
+    </form>
+  </section>
+{% endblock %}
+<!-- ----- End of file content ----- -->

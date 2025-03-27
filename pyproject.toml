@@ -1,0 +1,36 @@
+# Filename: ./pyproject.toml
+# ----- Start of file content -----
+[build-system]
+requires = ["setuptools>=42"] # Good practice to specify minimum setuptools version
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flaskr_enhanced"
+version = "1.0.0"
+description = "An enhanced version of the Flask tutorial blog application."
+readme = "README.md"
+requires-python = ">=3.8"
+license = "BSD-3-Clause" # Use SPDX string format
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Framework :: Flask",
+    # Removed deprecated license classifier
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "Flask>=2.0",
+    "python-dotenv>=0.15",
+    "Markdown>=3.3",
+]
+
+[project.urls] # Optional
+# Homepage = "https://github.com/yourusername/flaskr_enhanced" # Example URL
+# Repository = "https://github.com/yourusername/flaskr_enhanced" # Example URL
+
+# --- ADDED SECTION ---
+[tool.setuptools]
+# Explicitly tell setuptools which directories contain packages
+packages = ["flaskr"]
+# --------------------
+
+# ----- End of file content -----

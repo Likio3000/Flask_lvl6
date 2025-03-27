@@ -1,0 +1,24 @@
+<!-- Filename: ./flaskr/templates/blog/create.html -->
+<!-- ----- Start of file content ----- -->
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Create New Post{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <section>
+    <form method="post">
+      <div>
+        <label for="title">Title</label>
+        <input name="title" id="title" value="{{ request.form.get('title', '') }}" required autofocus>
+      </div>
+      <div>
+        <label for="body">Body (Markdown supported)</label> {# Added hint for Markdown #}
+        <textarea name="body" id="body" required>{{ request.form.get('body', '') }}</textarea>
+      </div>
+      <input type="submit" value="Save Post">
+    </form>
+  </section>
+{% endblock %}
+<!-- ----- End of file content ----- -->

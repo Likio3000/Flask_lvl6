@@ -1,0 +1,17 @@
+# Filename: ./flaskr/templates/errors/403.html
+# ----- Start of file content -----
+{% extends 'base.html' %}
+
+{% block title %}Forbidden{% endblock %}
+
+{% block header %}
+  <h1>403 - Forbidden</h1>
+{% endblock %}
+
+{% block content %}
+  <section class="text-center">
+    <p>Sorry, you do not have permission to access this page.</p>
+    <p><a href="{{ url_for('index') }}" class="button">Go to Homepage</a></p>
+  </section>
+{% endblock %}
+# ----- End of file content -----

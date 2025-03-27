@@ -1,0 +1,17 @@
+# Filename: ./flaskr/templates/errors/500.html
+# ----- Start of file content -----
+{% extends 'base.html' %}
+
+{% block title %}Internal Server Error{% endblock %}
+
+{% block header %}
+  <h1>500 - Internal Server Error</h1>
+{% endblock %}
+
+{% block content %}
+  <section class="text-center">
+    <p>Sorry, something went wrong on our end. We are working to fix it!</p>
+    <p>Please try again later.</p>
+    <p><a href="{{ url_for('index') }}" class="button">Go to Homepage</a></p>
+  </section>
+{% endblock %}
