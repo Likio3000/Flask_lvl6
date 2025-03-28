@@ -33,4 +33,11 @@ dependencies = [
 packages = ["flaskr"]
 # --------------------
 
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["flaskr"]
+
 # ----- End of file content -----
